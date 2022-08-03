@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: springboot-app
-  name: springboot-app
+    app: myclusterapp
+  name: myclusterapp
 spec:
   replicas: 2
   selector:
