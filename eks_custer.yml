@@ -36,6 +36,5 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 8088
-    nodeport: 30008
   selector:
     app: myclusterapp
