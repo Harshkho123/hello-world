@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: springboot-app
+  name: springboot-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myclusterapp
+  template:
+    metadata:
+      labels:
+        app: myclusterapp
+    spec:
+      containers:
+      - name: myclusterapp
+        image: 193500831036.dkr.ecr.us-east-2.amazonaws.com/myownrepo:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8088
+          name: http
+          protocol: TCP
+# service type loadbalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: myclusterapp
+    k8s-app: myclusterapp
+  name: myclusterapp
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8088
+  type: LoadBalancer
+  selector:
+    app: myclusterapp
