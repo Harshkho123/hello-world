@@ -38,5 +38,5 @@ ports:
     port: 80
     targetPort: 8080
     nodeport: 30008
-  selector:
-    app: myclusterapp
+  - selector:
+     app: myclusterapp
