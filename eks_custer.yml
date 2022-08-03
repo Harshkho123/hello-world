@@ -19,7 +19,7 @@ spec:
         image: 193500831036.dkr.ecr.us-east-2.amazonaws.com/myownrepo:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8088
+        - containerPort: 8080
           name: http
           protocol: TCP
 # service type loadbalancer
@@ -32,9 +32,10 @@ metadata:
     k8s-app: myclusterapp
   name: myclusterapp
 spec:
+  type: NodePort
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8088
+  - port: 8080
+    nodePort: 30001
+    protocol: TCP
   selector:
     app: myclusterapp
