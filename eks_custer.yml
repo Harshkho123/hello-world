@@ -34,8 +34,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 8080
-    nodePort: 30001
+  - port: 8081
     protocol: TCP
   selector:
     app: myclusterapp
