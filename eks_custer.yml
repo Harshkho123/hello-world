@@ -27,14 +27,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: myclusterapp
   labels:
     app: myclusterapp
-    k8s-app: myclusterapp
-  name: myclusterapp
 spec:
   type: NodePort
   ports:
-  - port: 8081
+  - port: 8080
+    nodePort: 30001
     protocol: TCP
   selector:
     app: myclusterapp
