@@ -1,4 +1,6 @@
-def buildJar() {
-    echo "building the application..."
-    sh 'mvn package'
-} 
+def call(){
+ echo "Building java project"
+  sh '''
+  mvn clean install
+  '''
+}
